@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ShoeSphere</title>
+    <style>
+       * {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    color: #333;
+    background-image:url('loginbgpic.webp') ;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center; 
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: #f2f2f2;
+}
+
+.logo img {
+    width: 110px;
+    height: 60px;
+    margin-right: 10px;
+    
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #333;
+    
+}
+.header-right .cart-icon{
+    margin-left: 15px;
+}
+
+.search input {
+    padding: 5px;
+    border-radius: 30px;
+    text-align: center;
+    
+}
+
+        .container {
+            max-width: 450px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container input[type="text"], .container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        
+        }
+
+        .container input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    margin-top: 295px;
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="home.html">
+                <img src="logo1.jpg" alt="ShoeSphere Logo">
+            </a>
+            
+        </div>
+        <nav>
+            <ul>
+                <li><a href="men.html">MEN</a></li>
+                <li><a href="women.html">WOMEN</a></li>
+                <li><a href="kids.html">KIDS</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <a href="about.html">ABOUT</a>
+            <a href="signup.html">SIGN UP</a>
+            <div class="search">
+                <input type="text" placeholder="SEARCH">
+            </div>
+            <a href="cart.html" class="cart-icon">🛒</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Login to ShoeSphere</h2>
+        <form>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <footer>
+        <p>© 2024 Copyright: ShoeSphere.com</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+    "men": [
+        {
+            "id": 1,
+            "name": "Switch Moves",
+            "price": "Rs. 4,999.00",
+            "image": "men1.avif"
+        },
+        {
+            "id": 2,
+            "name": "Ultraboost 5s Shoes",
+            "price": "Rs. 5,999.00",
+            "image": "men2.avif"
+        },
+        {
+            "id": 3,
+            "name": "Ultraboost 5", 
+            "price": "Rs. 6,599.00",
+            "image": "men3.avif"
+        },
+        {
+            "id": 4,
+            "name": "Supernova Rise",
+            "price": "Rs. 3,999.00",
+            "image": "men4.avif"
+        },
+        {
+            "id": 5,
+            "name": "Response Runs",
+            "price": "Rs. 5,999.00",
+            "image": "men5.avif"
+        },
+        {
+            "id": 6,
+            "name": "Switch Move Plus",
+            "price": "Rs. 7,999.00",
+            "image": "men6.avif"
+        }
+    ]
+}

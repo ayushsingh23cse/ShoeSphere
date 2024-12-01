@@ -1,0 +1,40 @@
+{
+    "shoes": [
+        {
+            "name": "Formal canvas shoe for men",
+            "price": "₹2999.00",
+            "image": "best1.avif",
+            "alt": "Formal canvas shoe for men"
+        },
+        {
+            "name": "Sneakers shoe for men",
+            "price": "₹2999.00",
+            "image": "best2.avif",
+            "alt": "Sneakers shoe for men"
+        },
+        {
+            "name": "Slick Sneakers shoe",
+            "price": "₹2999.00",
+            "image": "best3.avif",
+            "alt": "Slick Sneakers shoe"
+        },
+        {
+            "name": "Formal canvas shoe for men",
+            "price": "₹2999",
+            "image": "best4.avif",
+            "alt": "Formal canvas shoe for men"
+        },
+        {
+            "name": "Slick running shoes",
+            "price": "₹2999.00",
+            "image": "best5.avif",
+            "alt": "Slick running shoes"
+        },
+        {
+            "name": "Formal Slick shoe for men",
+            "price": "₹2999",
+            "image": "best6.avif",
+            "alt": "Formal Slick shoe for men"
+        }
+    ]
+}

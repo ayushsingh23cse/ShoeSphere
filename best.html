@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoeSphere - Best Selling</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('background.jpg'); /* Replace 'background.jpg' with your background image */
+            background-size: cover;
+            background-position: center;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(242, 242, 242, 0.9);
+        }
+        .logo img { width: 110px; height: 60px; }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li { margin: 0 20px; }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .search {
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 5px 15px;
+        }
+        .search input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            width: 200px; /* Adjust width of the search input */
+        }
+        .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .shoe-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .shoe-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .shoe-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .shoe-card img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .shoe-card p {
+            margin: 10px 0;
+        }
+        .shoe-card button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .shoe-card button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="home.html"><img src="logo1.jpg" alt="ShoeSphere Logo"></a></div>
+        <nav>
+            <ul>
+                <li><a href="men.html">MEN</a></li>
+                <li><a href="women.html">WOMEN</a></li>
+                <li><a href="kids.html">KIDS</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="header-links">
+                <a href="about.html">ABOUT</a>
+                <a href="signup.html">SIGN UP</a>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="SEARCH">
+            </div>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                🛒
+            </div>
+        </div>
+    </header>
+    <main>
+        <h2>Best Selling Products</h2>
+        <div class="shoe-container" id="shoeContainer"></div>
+    </main>
+    <footer>
+        <p>© <span id="year"></span> Copyright: ShoeSphere.com</p>
+    </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Function to update the cart count
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        // Add item to cart
+        function addToCart(shoe) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(shoe);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        // Fetch and display shoes
+        fetch('shoes.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('shoeContainer');
+                data.shoes.forEach(shoe => {
+                    const card = document.createElement('div');
+                    card.className = 'shoe-card';
+                    card.innerHTML = `
+                        <img src="${shoe.image}" alt="${shoe.alt}">
+                        <p>${shoe.name}</p>
+                        <p>${shoe.price}</p>
+                        <button onclick='addToCart(${JSON.stringify(shoe)})'>Buy Now</button>
+                    `;
+                    container.appendChild(card);
+                });
+            })
+            .catch(err => console.error('Error loading shoes:', err));
+
+        // Initialize cart count
+        updateCartCount();
+    </script>
+</body>
+</html>

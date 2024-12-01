@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoeSphere - Cart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white;
+            background-image: url('kidsbg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            padding-top: 70px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(242, 242, 242, 0.9);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .logo img {
+            width: 110px;
+            height: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .search input {
+            padding: 5px;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        .cart-icon {
+            font-size: 24px;
+        }
+
+        .cart-container {
+            width: 80%;
+            margin: 100px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f2f2f2;
+            margin-bottom: 20px;
+        }
+
+        .cart-header h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .item-details .name {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .item-details .price {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-control input {
+            width: 40px;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .remove-btn {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            background-color: #e60000;
+        }
+
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            margin-top: 20px;
+            border-top: 2px solid #f2f2f2;
+        }
+
+        .checkout-btn {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="home.html">
+            <img src="logo1.jpg" alt="ShoeSphere Logo">
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="men.html">MEN</a></li>
+            <li><a href="women.html">WOMEN</a></li>
+            <li><a href="kids.html">KIDS</a></li>
+        </ul>
+    </nav>
+    <div class="header-right">
+        <a href="about.html">ABOUT</a>
+        <a href="signup.html">SIGN UP</a>
+        <div class="search">
+            <input type="text" placeholder="SEARCH">
+        </div>
+        <a href="cart.html" class="cart-icon">🛒</a>
+    </div>
+</header>
+
+<div class="cart-container">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <span>3 Items</span>
+    </div>
+
+    <div class="cart-items">
+        <div class="cart-item">
+            <img src="kids1.avif" alt="Switch Moves">
+            <div class="item-details">
+                <p class="name">Switch Moves</p>
+                <p class="price">Rs. 4,999.00</p>
+            </div>
+            <div class="quantity-control">
+                <button onclick="decreaseQuantity(1)">-</button>
+                <input type="number" id="quantity1" value="1" min="1" />
+                <button onclick="increaseQuantity(1)">+</button>
+            </div>
+            <button class="remove-btn">Remove</button>
+        </div>
+
+        <div class="cart-item">
+            <img src="kids2.avif" alt="Ultraboost 5s">
+            <div class="item-details">
+                <p class="name">Ultraboost 5s Shoes</p>
+                <p class="price">Rs. 5,999.00</p>
+            </div>
+            <div class="quantity-control">
+                <button onclick="decreaseQuantity(2)">-</button>
+                <input type="number" id="quantity2" value="1" min="1" />
+                <button onclick="increaseQuantity(2)">+</button>
+            </div>
+            <button class="remove-btn">Remove</button>
+        </div>
+
+        <div class="cart-item">
+            <img src="kids3.avif" alt="Ultraboost 5">
+            <div class="item-details">
+                <p class="name">Ultraboost 5</p>
+                <p class="price">Rs. 6,599.00</p>
+            </div>
+            <div class="quantity-control">
+                <button onclick="decreaseQuantity(3)">-</button>
+                <input type="number" id="quantity3" value="1" min="1" />
+                <button onclick="increaseQuantity(3)">+</button>
+            </div>
+            <button class="remove-btn">Remove</button>
+        </div>
+    </div>
+
+    <div class="total">
+        <span>Total:</span>
+        <span id="total-price">Rs. 17,597.00</span>
+    </div>
+
+    <button class="checkout-btn">Proceed to Checkout</button>
+</div>
+
+<script>
+    // Initial prices
+    const prices = [4999, 5999, 6599];
+    
+    // Update total price function
+    function updateTotal() {
+        let total = 0;
+        for (let i = 1; i <= 3; i++) {
+            const quantity = document.getElementById(`quantity${i}`).value;
+            total += prices[i - 1] * quantity;
+        }
+        document.getElementById("total-price").textContent = `Rs. ${total.toFixed(2)}`;
+    }
+
+    // Increase quantity
+    function increaseQuantity(itemId) {
+        const quantity = document.getElementById(`quantity${itemId}`);
+        quantity.value = parseInt(quantity.value) + 1;
+        updateTotal();
+    }
+
+    // Decrease quantity
+    function decreaseQuantity(itemId) {
+        const quantity = document.getElementById(`quantity${itemId}`);
+        if (quantity.value > 1) {
+            quantity.value = parseInt(quantity.value) - 1;
+            updateTotal();
+        }
+    }
+
+    // Remove item
+    const removeButtons = document.querySelectorAll('.remove-btn');
+    removeButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            const cartItem = button.parentElement;
+            cartItem.remove();
+            updateTotal();
+        });
+    });
+</script>
+
+</body>
+</html>

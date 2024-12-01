@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoeSphere - Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('menbg.jpg');
+            background-size: cover;
+            background-position: right;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            background-color: #f2f2f2;
+            width: 100%;
+            top: 0;
+        }
+
+        .logo img {
+            width: 110px;
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .header-right .cart-icon {
+            margin-left: 15px;
+            font-size: 20px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .search input {
+            padding: 5px;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            margin-top: 70px;
+        }
+
+        .shoe-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns in each row */
+            gap: 30px; /* Increased gap between cards */
+            max-width: 1200px; /* Increased max width of the container */
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .shoe-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px; /* Increased padding for larger boxes */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+            width: 350px; /* Increased width of the box */
+            height: 450px; /* Increased height of the box */
+        }
+
+        .shoe-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-height: 250px; /* Increased max height for the image */
+        }
+
+        .shoe-card img:hover {
+            transform: scale(1.1); /* Zooms in on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
+        }
+
+        .shoe-card .price {
+            font-size: 20px; /* Increased font size for the price */
+            margin: 15px 0;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .shoe-card .name {
+            font-size: 18px; /* Increased font size for the name */
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .shoe-card button {
+            padding: 12px 25px; /* Larger padding for the button */
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .shoe-card button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: translateY(-3px); /* Slight upward movement */
+        }
+
+        .shoe-card:hover {
+            transform: scale(1.05); /* Slight zoom on card hover */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow on card hover */
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="home.html">
+            <img src="logo1.jpg" alt="ShoeSphere Logo">
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="men.html">MEN</a></li>
+            <li><a href="women.html">WOMEN</a></li>
+            <li><a href="kids.html">KIDS</a></li>
+        </ul>
+    </nav>
+    <div class="header-right">
+        <a href="about.html">ABOUT</a>
+        <a href="signup.html">SIGN UP</a>
+        <div class="search">
+            <input type="text" placeholder="SEARCH">
+        </div>
+        <a href="cart.html" class="cart-icon">🛒</a>
+    </div>
+</header>
+
+<main>
+    <section class="shoe-container" id="shoe-container">
+        <!-- Product cards will be dynamically injected here -->
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Copyright: ShoeSphere.com</p>
+</footer>
+
+<script>
+    
+    // Fetch and load products from the JSON file
+    fetch('products.json')
+        .then(response => response.json())
+        .then(data => {
+            const shoeContainer = document.getElementById('shoe-container');
+            data.men.forEach(product => {
+                // Create the shoe card
+                const shoeCard = document.createElement('div');
+                shoeCard.classList.add('shoe-card');
+
+                // Add HTML content to the shoe card
+                shoeCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <p class="price">${product.price}</p>
+                    <p class="name">${product.name}</p>
+                    <button>BUY NOW</button>
+                `;
+
+                // Append the shoe card to the container
+                shoeContainer.appendChild(shoeCard);
+            });
+        })
+        .catch(error => console.error('Error loading products:', error));
+</script>
+
+</body>
+</html>
